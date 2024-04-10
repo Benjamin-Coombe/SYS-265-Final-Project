@@ -1,0 +1,13 @@
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    ens160:
+      addresses:
+        - "PUT IP ADDRESS HERE"
+      nameservers:
+        search: "DOMAIN NAME HERE"
+        addresses: "[DNS IP HERE]"
+      routes:
+        - to: default
+          via: "DEFAULT GATEWAY HERE"
