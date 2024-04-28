@@ -1,0 +1,32 @@
+services:
+  app:
+    image: monica
+    depends_on:
+      - db
+    ports:
+      - 8085:80
+    environment:
+      - APP_KEY=dosisoswUzu9e0UfrlHuqlspotrlvusa
+      - DB_HOST=db
+      - DB_USERNAME=monica
+      - DB_PASSWORD=secret
+    volumes:
+      - data:/var/www/html/storage
+    restart: always
+
+  db:
+    image: mariadb:11
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=true
+      - MYSQL_DATABASE=monica
+      - MYSQL_USER=monica
+      - MYSQL_PASSWORD=secret
+    volumes:
+      - mysql:/var/lib/mysql
+    restart: always
+
+volumes:
+  data:
+    name: data
+  mysql:
+    name: mysql
